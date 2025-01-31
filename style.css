@@ -1,14 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensures vertical alignment */
-  border: 1px solid black;
-  padding: 10px;
+  align-items: center;
+  border: 2px solid #ddd;
+  padding: 15px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: auto;
 }
 
 .nav-items {
@@ -20,59 +28,89 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  gap: 20px;
 }
 
 .nav-items > ul > li {
-  padding: 10px;
+  padding: 10px 15px;
   margin: 10px;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-items ul li:hover {
+  color: #27ae60;
 }
 
 .restro-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
   border: 1px solid black;
 }
 
 .restro-card {
-  width: 250px;
-  height: 350px;
-  font-size: 16px;
-  padding: 5px;
+  width: 280px;
+  height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .restro-card:hover {
-  border: 1px solid black;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
   cursor: pointer;
 }
 
 .res-img {
   width: 100%;
-  height: 180px;
+  height: 225px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
-.search {
-  padding: 10px;
+.restro-card h3 {
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+  color: #333;
 }
 
 .restro-card h4 {
-  margin: 5px 0;
-  padding: 0;
-  font-size: 12px;
+  font-size: 14px;
+  color: #777;
+  text-align: center;
 }
 
-.restro-card h3 {
-  margin: 5px 0;
-  padding: 0;
-  font-size: 25px;
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }
 
 .filter-btn {
-  margin: 10px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #2e8b57;
 }

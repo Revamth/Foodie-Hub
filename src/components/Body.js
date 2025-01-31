@@ -1,9 +1,25 @@
 import Restrocard from "./Restocard";
-import resList from "../utils/resList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
-  const [listofRestaurants, setlistofRestaurants] = useState(resList);
+  const [listofRestaurants, setlistofRestaurants] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const response = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await response.json();
+    console.log(json);
+    setlistofRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+
+  if (listofRestaurants.length === 0) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="body">
       <div className="filter">
@@ -11,7 +27,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const filteredList = listofRestaurants.filter(
-              (restauant) => restauant.info.avgRating > 4
+              (restaurant) => restaurant.info.avgRating > 4
             );
             setlistofRestaurants(filteredList);
           }}
