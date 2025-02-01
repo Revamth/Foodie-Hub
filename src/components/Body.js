@@ -10,33 +10,19 @@ const Body = () => {
   useEffect(() => {
     getRestaurants();
   }, []);
-  async function getRestaurants() {
-    try {
-      const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
-      const json = await response.json();
+  const getRestaurants = async () => {
+    const response = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await response.json();
 
-      function checkJsonData(jsonData) {
-        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-          let checkData =
-            json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants;
-
-          if (checkData !== undefined) {
-            return checkData;
-          }
-        }
-      }
-
-      const resData = checkJsonData(json);
-
-      setlistofRestaurants(resData);
-      setfilteredRestaurants(resData);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+    setlistofRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setfilteredRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
 
   if (listofRestaurants.length === 0) {
     return <Shimmer />;
@@ -70,7 +56,7 @@ const Body = () => {
             const filteredList = listofRestaurants.filter(
               (restaurant) => restaurant.info.avgRating > 4
             );
-            setlistofRestaurants(filteredList);
+            setfilteredRestaurants(filteredList);
           }}
         >
           Top Rated Restaurants
