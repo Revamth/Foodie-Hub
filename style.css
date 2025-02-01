@@ -28,7 +28,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  gap: 20px;
+  /* gap: 20px; */
 }
 
 .nav-items > ul > li {
@@ -94,13 +94,77 @@
   text-align: center;
 }
 
-.search {
+.filter {
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  flex-wrap: wrap;
 }
 
-.filter-btn {
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #27ae60;
+  box-shadow: 0 0 6px rgba(39, 174, 96, 0.5);
+}
+
+.filter-btn,
+.search button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  margin: 10px;
+}
+
+.filter-btn:hover,
+.search button:hover {
+  background-color: #2e8b57;
+}
+
+.shimmer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+}
+
+.shimmer-card {
+  width: 250px;
+  height: 350px;
+  border-radius: 8px;
+  background: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.login-btn {
   background-color: #27ae60;
   color: white;
   border: none;
@@ -111,6 +175,6 @@
   transition: background 0.3s ease;
 }
 
-.filter-btn:hover {
+.login-btn:hover {
   background-color: #2e8b57;
 }
