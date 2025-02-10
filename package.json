@@ -18,13 +18,17 @@
   "author": "Revamth",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
     "parcel": "^2.13.3",
+    "postcss": "^8.5.1",
     "prettier": "3.4.2",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "tailwindcss": "^4.0.3"
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.29.0"
   },
   "browerslist": [
     "last 5 version"
