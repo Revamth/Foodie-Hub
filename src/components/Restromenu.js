@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { MENU_URL } from "../utils/constants";
@@ -9,17 +10,14 @@ const Restromenu = () => {
 
   useEffect(() => {
     fetchMenu();
-  }, [id]);
+  }, [resid]);
 
   const fetchMenu = async () => {
     try {
       const response = await fetch(
         MENU_URL + resid + "&catalog_qa=undefined&submitAction=ENTER"
       );
-      if (!response.ok) throw new Error("Failed to fetch menu");
-
       const json = await response.json();
-      console.log(json);
 
       setMenu(json.data);
     } catch (error) {

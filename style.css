@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -23,17 +24,20 @@
   display: flex;
 }
 
-.nav-items > ul {
+.nav-items ul {
   display: flex;
+  align-items: center;
   list-style-type: none;
   padding: 0;
   margin: 0;
-  /* gap: 20px; */
 }
 
-.nav-items > ul > li {
-  padding: 10px 15px;
-  margin: 10px;
+.nav-items ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  margin: 0;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
@@ -44,13 +48,49 @@
   color: #27ae60;
 }
 
+.cart {
+  width: 40px;
+  height: 40px;
+  background-color: #27ae60;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cart img {
+  width: 60%;
+  height: auto;
+}
+
+.cart:hover {
+  background-color: #2e8b57;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #2e8b57;
+}
+
 .restro-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
   gap: 20px;
-  border: 1px solid black;
 }
 
 .restro-card {
@@ -164,17 +204,11 @@
   animation: shimmer 1.5s infinite;
 }
 
-.login-btn {
-  background-color: #27ae60;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-
-.login-btn:hover {
-  background-color: #2e8b57;
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }

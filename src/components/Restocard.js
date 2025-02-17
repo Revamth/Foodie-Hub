@@ -7,7 +7,7 @@ const Restrocard = ({ resData }) => {
 
   return (
     <Link
-      to={`/restaurant/${id}`}
+      to={"/restaurant/" + id}
       style={{ textDecoration: "none", color: "inherit" }}
     >
       <div className="restro-card">
