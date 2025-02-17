@@ -1,5 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import "../style/Restocard.css";
 
 const Restrocard = ({ resData }) => {
   const { name, cuisines, avgRating, sla, cloudinaryImageId, id } =

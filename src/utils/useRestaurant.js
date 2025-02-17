@@ -1,6 +1,6 @@
 // hooks/useRestaurant.js
 import { useState, useEffect } from "react";
-import { SWIGGY_API_URL } from "./constants";
+import { SWIGGY_API_URL } from "../utils/constants";
 
 const useRestaurant = () => {
   const [listofRestaurants, setlistofRestaurants] = useState([]);
@@ -35,7 +35,7 @@ const useRestaurant = () => {
 
   const filterTopRatedRestaurants = () => {
     const filteredList = listofRestaurants.filter(
-      (restaurant) => restaurant.info.avgRating > 4
+      (restaurant) => restaurant.info.avgRating > 4.5
     );
     setfilteredRestaurants(filteredList);
   };

@@ -2,6 +2,7 @@
 import Restrocard from "./Restocard";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import "../style/Body.css";
 
 const Body = () => {
   const {

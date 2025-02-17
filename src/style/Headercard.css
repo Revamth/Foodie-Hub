@@ -1,0 +1,80 @@
+/* headercard.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ddd;
+  padding: 15px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.nav-items {
+  display: flex;
+}
+
+.nav-items ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-items ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-items ul li:hover {
+  color: #27ae60;
+}
+
+.cart {
+  width: 40px;
+  height: 40px;
+  background-color: #27ae60;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cart img {
+  width: 60%;
+  height: auto;
+}
+
+.cart:hover {
+  background-color: #2e8b57;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #2e8b57;
+}

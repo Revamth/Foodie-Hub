@@ -1,6 +1,7 @@
 import { LOGO_URL, CART_IMAGE } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "../style/Headercard.css";
 
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");

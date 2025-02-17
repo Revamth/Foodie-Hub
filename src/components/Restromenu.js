@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useRestromenu from "../utils/useRestromenu";
+import "../style/Restromenu.css";
 
 const Restromenu = () => {
   const { resid } = useParams();
