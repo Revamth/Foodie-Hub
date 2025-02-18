@@ -55,11 +55,11 @@ const Restromenu = () => {
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300"
             >
               {imageId && (
-                <div className="w-full aspect-[4/3] max-h-[320px] overflow-hidden">
+                <div className="w-full aspect-[4/3] max-h-[320px] overflow-hidden ">
                   <img
                     src={`https://media-assets.swiggy.com/${imageId}`}
                     alt={name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover cursor-pointer"
                   />
                 </div>
               )}
