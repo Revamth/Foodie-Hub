@@ -1,35 +1,41 @@
 import { LOGO_URL, CART_IMAGE } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../style/Headercard.css";
 
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
+
   return (
-    <div className="header">
+    <div className="flex justify-between items-center border-2 border-gray-300 p-4 bg-white shadow-md">
       <div>
-        <img className="logo" src={LOGO_URL} alt="Foodie Hub" />
+        <img className="w-20 h-auto" src={LOGO_URL} alt="Foodie Hub" />
       </div>
-      <div className="nav-items">
-        <ul className="">
+      <div className="flex items-center">
+        <ul className="flex items-center space-x-6 text-lg font-bold">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="hover:text-green-600 transition-colors">
+              Home
+            </Link>
           </li>
           <li>
-            <img className="cart" src={CART_IMAGE} to="/cart"></img>
+            <Link to="/cart">
+              <img
+                className="w-10 h-10 bg-green-600 rounded-full p-2 shadow-md hover:bg-green-700 transition-all"
+                src={CART_IMAGE}
+                alt="Cart"
+              />
+            </Link>
           </li>
-          <button
-            className="login-btn"
-            onClick={() => {
-              if (btnName === "Login") {
-                setbtnName("Logout");
-              } else {
-                setbtnName("Login");
+          <li>
+            <button
+              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition cursor-pointer"
+              onClick={() =>
+                setbtnName(btnName === "Login" ? "Logout" : "Login")
               }
-            }}
-          >
-            {btnName}
-          </button>
+            >
+              {btnName}
+            </button>
+          </li>
         </ul>
       </div>
     </div>
