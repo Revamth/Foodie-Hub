@@ -7,11 +7,8 @@ const useRestromenu = (resId) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetch(
-          MENU_URL + resId + "&catalog_qa=undefined&submitAction=ENTER"
-        );
+        const data = await fetch(MENU_URL + resId);
         const json = await data.json();
-        console.log("Fetched Menu Data:", json); // Debugging
         setResInfo(json.data);
       } catch (error) {
         console.error("Error fetching menu:", error);
@@ -19,7 +16,7 @@ const useRestromenu = (resId) => {
     };
 
     if (resId) fetchData();
-  }, [resId]); // ✅ Correct dependency
+  }, [resId]);
 
   return resInfo;
 };

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [btnName, setbtnName] = useState("Login");
+  const [btnName, setBtnName] = useState("Login");
 
   return (
     <div className="flex justify-between items-center border-2 border-gray-300 p-4 bg-white shadow-md">
@@ -30,7 +30,7 @@ const Header = () => {
             <button
               className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition cursor-pointer"
               onClick={() =>
-                setbtnName(btnName === "Login" ? "Logout" : "Login")
+                setBtnName(btnName === "Login" ? "Logout" : "Login")
               }
             >
               {btnName}

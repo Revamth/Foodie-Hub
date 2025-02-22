@@ -1,47 +1,44 @@
-// hooks/useRestaurant.js
 import { useState, useEffect } from "react";
 import { SWIGGY_API_URL } from "../utils/constants";
 
 const useRestaurant = () => {
-  const [listofRestaurants, setlistofRestaurants] = useState([]);
-  const [filteredRestaurants, setfilteredRestaurants] = useState([]);
+  const [listofRestaurants, setListofRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
+    const getRestaurants = async () => {
+      try {
+        const response = await fetch(SWIGGY_API_URL);
+        const json = await response.json();
+        const restaurants =
+          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants;
+        setListofRestaurants(restaurants);
+        setFilteredRestaurants(restaurants);
+      } catch (error) {
+        console.error("Error fetching restaurants:", error);
+      }
+    };
+
     getRestaurants();
   }, []);
-
-  const getRestaurants = async () => {
-    try {
-      const response = await fetch(SWIGGY_API_URL);
-      const json = await response.json();
-      const restaurants =
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-
-      setlistofRestaurants(restaurants);
-      setfilteredRestaurants(restaurants);
-    } catch (error) {
-      console.error("Error fetching restaurants:", error);
-    }
-  };
 
   const searchRestaurants = (searchText) => {
     const filteredList = listofRestaurants.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    setfilteredRestaurants(filteredList);
+    setFilteredRestaurants(filteredList);
   };
 
   const filterTopRatedRestaurants = () => {
     const filteredList = listofRestaurants.filter(
       (restaurant) => restaurant.info.avgRating > 4.5
     );
-    setfilteredRestaurants(filteredList);
+    setFilteredRestaurants(filteredList);
   };
 
   return {
-    listofRestaurants,
     filteredRestaurants,
     searchText,
     setSearchText,

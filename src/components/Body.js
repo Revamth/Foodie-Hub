@@ -11,9 +11,7 @@ const Body = () => {
     filterTopRatedRestaurants,
   } = useRestaurant();
 
-  if (filteredRestaurants.length === 0) {
-    return <Shimmer />;
-  }
+  if (filteredRestaurants.length === 0) return <Shimmer />;
 
   return (
     <div className="container mx-auto px-4 py-8">
