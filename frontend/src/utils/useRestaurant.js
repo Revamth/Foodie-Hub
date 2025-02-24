@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { SWIGGY_API_URL } from "../utils/constants";
+import { SWIGGY_API_URL } from "./constants";
 
 const useRestaurant = () => {
   const [listofRestaurants, setListofRestaurants] = useState([]);
