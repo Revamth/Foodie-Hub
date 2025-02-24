@@ -1,16 +1,44 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Headercard from "./components/Headercard";
-import Body from "./components/Body";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Restromenu from "./components/Restromenu";
+
+const Body = lazy(() => import("./components/Body"));
+const Restromenu = lazy(() => import("./components/Restromenu"));
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught an error", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children;
+  }
+}
 
 const Applayout = () => {
   return (
     <div className="app">
       <Headercard />
-      <Outlet />
+      <ErrorBoundary>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

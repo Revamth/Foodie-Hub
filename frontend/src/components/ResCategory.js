@@ -1,6 +1,5 @@
 import React from "react";
-import ItemList from "./ItemList";
-
+import ItemList from "./itemList";
 const ResCategory = ({ data, showlist, setShowlist }) => {
   return (
     <div className="w-6/12 mx-auto my-6">
