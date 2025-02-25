@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Headercard from "./components/Headercard";
+import LoginPage from "./components/LoginPage";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
@@ -55,6 +56,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resid",
         element: <Restromenu />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
     errorElement: <Error />,
