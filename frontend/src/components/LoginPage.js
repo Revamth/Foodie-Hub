@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import Link here
 import { motion } from "framer-motion";
 
 const LoginPage = () => {
@@ -7,7 +7,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     if (email && password) {
       navigate("/");
@@ -20,7 +20,7 @@ const LoginPage = () => {
       style={{ marginTop: "-10px" }}
     >
       <motion.div
-        className="absolute w-96 h-96 bg-gradient-to-r from-green-500 to-green-700 opacity-40 rounded-lg"
+        className="absolute w-96 h-96 bg-gradient-to-r from-emerald-500 to-emerald-700 opacity-40 rounded-lg"
         initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
         transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -33,9 +33,17 @@ const LoginPage = () => {
             By logging in, you agree to the ridiculously long terms that you
             didn't bother to read.
           </p>
+          <div className="mt-5 text-left">
+            <p className="text-gray-600">
+              Don't have an account?{" "}
+              <Link to="/signup" className="text-green-600 hover:underline">
+                Sign up
+              </Link>
+            </p>
+          </div>
         </div>
         <div className="w-1/2 bg-gray-900 relative flex items-center justify-center p-12">
-          <form className="w-full space-y-8" onSubmit={handleSubmit}>
+          <form className="w-full space-y-8" onSubmit={handleLogin}>
             <div>
               <label className="block text-lg text-gray-400 mb-3">Email</label>
               <input
@@ -59,7 +67,7 @@ const LoginPage = () => {
             <motion.input
               type="submit"
               value="Login"
-              className="w-full py-3 bg-green-500 text-white font-bold rounded-xl cursor-pointer text-lg shadow-lg hover:bg-green-600 transition-transform"
+              className="w-full py-3 bg-emerald-500 text-white font-bold rounded-xl cursor-pointer text-lg shadow-lg hover:bg-emerald-600 transition-transform"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             />

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Headercard from "./components/Headercard";
 import LoginPage from "./components/LoginPage";
 import Error from "./components/Error";
+import SignupPage from "./components/SignupPage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const Body = lazy(() => import("./components/Body"));
@@ -57,12 +58,16 @@ const appRouter = createBrowserRouter([
         path: "/restaurant/:resid",
         element: <Restromenu />,
       },
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
     ],
     errorElement: <Error />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />,
   },
 ]);
 
