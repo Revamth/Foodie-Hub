@@ -2,12 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
     <title>Foodie-Hub</title>
+
+    <!-- ✅ Preconnect to external domains -->
+    <link rel="preconnect" href="https://res.cloudinary.com" />
+    <link rel="preconnect" href="https://www.swiggy.com" />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="dns-prefetch" href="https://www.swiggy.com" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/demo/image/upload/w_300,h_300,c_fit/exampleImage.jpg"
+    />
+
     <link href="./src/index.css" rel="stylesheet" />
+
+    <link rel="modulepreload" href="./src/App.js" />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/App.js"></script>
+
+    <script type="module" src="./src/App.js" defer></script>
   </body>
 </html>

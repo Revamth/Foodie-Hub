@@ -7,9 +7,15 @@ const useRestromenu = (resId) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetch(MENU_URL + resId);
-        const json = await data.json();
-        setResInfo(json.data);
+        const cachedData = localStorage.getItem(`menu-${resId}`);
+        if (cachedData) {
+          setResInfo(JSON.parse(cachedData));
+        } else {
+          const data = await fetch(MENU_URL + resId);
+          const json = await data.json();
+          localStorage.setItem(`menu-${resId}`, JSON.stringify(json.data));
+          setResInfo(json.data);
+        }
       } catch (error) {
         console.error("Error fetching menu:", error);
       }
