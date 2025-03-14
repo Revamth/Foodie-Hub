@@ -6,18 +6,27 @@ const Restrocard = ({ resData }) => {
     resData?.info;
 
   return (
-    <Link to={"/restaurant/" + id} className="w-full">
-      <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <Link
+      to={"/restaurant/" + id}
+      className="w-full"
+      aria-label={`View ${name}`}
+    >
+      <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full">
         <div className="relative w-full">
           <div className="w-full aspect-[4/3] max-h-[300px] overflow-hidden">
             <img
               className="w-full h-full object-cover"
               src={CDN_URL + cloudinaryImageId}
               alt={name}
+              loading="lazy"
             />
           </div>
           <div className="absolute top-4 right-4 bg-white px-2 py-1 rounded-lg shadow-md">
-            <span className="text-green-500 font-medium">⭐ {avgRating}</span>
+            <span
+              className={`font-medium ${avgRating >= 4.0 ? "text-green-500" : avgRating >= 3.0 ? "text-orange-500" : "text-red-500"}`}
+            >
+              ⭐ {avgRating}
+            </span>
           </div>
         </div>
         <div className="p-4">

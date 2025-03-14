@@ -5,9 +5,12 @@ import LoginPage from "./components/LoginPage";
 import Error from "./components/Error";
 import SignupPage from "./components/SignupPage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const Body = lazy(() => import("./components/Body"));
 const Restromenu = lazy(() => import("./components/Restromenu"));
+const Cart = lazy(() => import("./components/Cart"));
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -15,7 +18,7 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
@@ -34,14 +37,22 @@ class ErrorBoundary extends React.Component {
 
 const Applayout = () => {
   return (
-    <div className="app">
-      <Headercard />
-      <ErrorBoundary>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
-      </ErrorBoundary>
-    </div>
+    <Provider store={appStore}>
+      <div className="app">
+        <Headercard />
+        <ErrorBoundary>
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen">
+                Loading...
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
+    </Provider>
   );
 };
 
@@ -57,6 +68,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resid",
         element: <Restromenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

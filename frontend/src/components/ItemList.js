@@ -1,6 +1,13 @@
-import React from "react";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div className="mt-6">
       {items.map((item) => (
@@ -13,14 +20,21 @@ const ItemList = ({ items }) => {
               <h3 className="text-xl font-bold text-gray-900">
                 {item.card.info.name}
               </h3>
-              <button className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition-all duration-200 ease-in-out transform hover:scale-105 cursor-pointer shadow-md">
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition-all duration-200 ease-in-out transform hover:scale-105 cursor-pointer shadow-md"
+                onClick={() => handleAddToCart(item)}
+                aria-label={`Add ${item.card.info.name} to cart`}
+              >
                 Add +
               </button>
             </div>
             <p className="text-green-600 font-bold mt-2">
-              ₹{(item.card.info.price || item.card.info.defaultPrice) / 100}
+              ₹
+              {(
+                (item.card.info.price || item.card.info.defaultPrice) / 100
+              ).toFixed(2)}
             </p>
-            <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+            <p className="text-gray-600 text-sm mt-2 leading-relaxed line-clamp-2">
               {item.card.info.description}
             </p>
           </div>
@@ -29,7 +43,10 @@ const ItemList = ({ items }) => {
               <img
                 src={`https://media-assets.swiggy.com/${item.card.info.imageId}`}
                 alt={item.card.info.name}
-                className="w-[156px] h-[144px] object-cover rounded-xl shadow-lg border-2 border-white hover:border-green-500 transition-all duration-300 ease-in-out"
+                className="w-32 h-32 object-cover rounded-xl shadow-lg border-2 border-white hover:border-green-500 transition-all duration-300 ease-in-out"
+                loading="lazy"
+                width="128"
+                height="128"
               />
             </div>
           )}

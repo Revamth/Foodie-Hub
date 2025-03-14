@@ -38,7 +38,6 @@ const useRestaurant = () => {
     setFilteredRestaurants(filteredList);
   };
 
-  // Debounce search input
   const debounce = (func, delay) => {
     let timeoutId;
     return function (...args) {

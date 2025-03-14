@@ -14,7 +14,7 @@ const Body = () => {
   if (filteredRestaurants.length === 0) return <Shimmer />;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <main className="container mx-auto px-4 py-8">
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
         <div className="flex w-full sm:w-auto items-center gap-2">
           <input
@@ -23,10 +23,12 @@ const Body = () => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             placeholder="Search restaurants..."
+            aria-label="Search restaurants"
           />
           <button
             className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 active:bg-green-700 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
             onClick={() => searchRestaurants(searchText)}
+            aria-label="Search"
           >
             Search
           </button>
@@ -34,6 +36,7 @@ const Body = () => {
         <button
           className="w-full sm:w-auto bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 active:bg-green-700 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
           onClick={filterTopRatedRestaurants}
+          aria-label="Show top rated restaurants"
         >
           Top Rated
         </button>
@@ -43,7 +46,7 @@ const Body = () => {
           <Restrocard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 
