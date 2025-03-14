@@ -11,7 +11,7 @@ const Body = () => {
     filterTopRatedRestaurants,
   } = useRestaurant();
 
-  if (filteredRestaurants.length === 0) return <Shimmer />;
+  if (filteredRestaurants?.length === 0) return <Shimmer />;
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -42,7 +42,7 @@ const Body = () => {
         </button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
-        {filteredRestaurants.map((restaurant) => (
+        {filteredRestaurants?.map((restaurant) => (
           <Restrocard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
